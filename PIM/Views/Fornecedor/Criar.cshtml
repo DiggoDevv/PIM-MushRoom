@@ -1,0 +1,26 @@
+﻿@model FornecedorModel
+@{
+    ViewData["Title"] = "Criar contato";
+}
+<div class="text-center">
+    <h1 class="display-4"> Cadastrar Fornecedor</h1>
+</div>
+
+<form asp-controller="Fornecedor" asp-action="Criar" method="post">
+
+    <div class="mb-3">
+        <label for="nome"> Nome:</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do fornecedor" >
+    </div>
+    <div class="mb-3">
+        <label for="email"> Email:</label>
+        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o Email do fornecedor">
+    </div>
+    <div class="mb-3">
+        <label for="telefone"> Telefone:</label>
+        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o telefone do fornecedor">
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+    <a class="btn btn-secondary btn-block" asp-controller="Fornecedor" asp-action="Index" role="button">Voltar</a>
+</form>
