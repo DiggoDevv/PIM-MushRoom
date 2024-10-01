@@ -13,26 +13,41 @@ namespace PIM.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            List<FornecedorModel> fonecedores = _fornecedorRepositorio.BuscarTodos();
+            return View(fonecedores);
         }
         public IActionResult Criar()
         {
             return View();
         }
-        public IActionResult Editar()
+        public IActionResult Editar(int id)
         {
-            return View();
+            FornecedorModel fornecedor = _fornecedorRepositorio.ListarPorId(id);
+            return View(fornecedor);
         }
-        public IActionResult ApagarConfirmacao()
+        public IActionResult ApagarConfirmacao(int id)
         {
-            return View();
+            FornecedorModel fornecedor = _fornecedorRepositorio.ListarPorId(id);
+            return View(fornecedor);
         }
 
+        public IActionResult Apagar(int id)
+        {
+            _fornecedorRepositorio.Apagar(id);
+            return RedirectToAction("Index");
+        }
         //recebendo a model
         [HttpPost]
         public IActionResult Criar(FornecedorModel fornecedorModel)
         {
             _fornecedorRepositorio.Adicionar(fornecedorModel);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Alterar(FornecedorModel fornecedorModel)
+        {
+            _fornecedorRepositorio.Alterar(fornecedorModel);
             return RedirectToAction("Index");
         }
     }

@@ -1,22 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Editar Contato";
+﻿@model FornecedorModel
+@{
+    ViewData["Title"] = "Editar Fornecedor";
 }
 <div class="text-center">
     <h1 class="display-4"> Editar Fornecedor</h1>
 </div>
 
-<form>
+<form asp-controller="Fornecedor" asp-action="Alterar" method="post">
+
+    <input type="hidden" asp-for="Id" />
     <div class="mb-3">
-        <label for="nome"> Nome:</label>
-        <input type="text" class="form-control" placeholder="Digite o nome do fornecedor">
+        <label for="nome_fornecedor"> Nome do fornecedor:</label>
+        <input type="text" asp-for="Nome_fornecedor" class="form-control" placeholder="Digite o nome do fornecedor">
     </div>
     <div class="mb-3">
-        <label for="email"> Email:</label>
-        <input type="text" class="form-control" placeholder="Digite o Email do fornecedor">
+        <label for="nome_produto"> Nome do produto:</label>
+        <input type="text" asp-for="Nome_produto" class="form-control" placeholder="Digite o nome do produto do fornecedor">
+    </div>
+    <div class="mb-3">
+        <label for="cnpj"> Cnpj do fornecedor:</label>
+        <input type="text" asp-for="Cnpj" class="form-control" placeholder="Digite o cnpj do fornecedor">
     </div>
     <div class="mb-3">
         <label for="telefone"> Telefone:</label>
-        <input type="text" class="form-control" placeholder="Digite o telefone do fornecedor">
+        <input type="text" asp-for="Telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
     </div>
 
     <button type="submit" class="btn btn-primary btn-block">Alterar</button>

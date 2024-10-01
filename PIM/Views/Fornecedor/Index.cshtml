@@ -1,4 +1,6 @@
-﻿@{
+﻿
+@model List<FornecedorModel>
+@{
     ViewData["Title"] = "Listagem de contatos";
 }
     <div class="text-center">
@@ -8,56 +10,39 @@
     </div>
     <br />
 
-    <h1 class="display-4"> Listagem de contatos </h1>
+    <h1 class="display-4"> Listagem de Fornecedores </h1>
     <table class="table">
+
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Celular</th>
+                <th scope="col">Nome do fornecedor</th>
+                <th scope="col">Nome do produto</th>
+                <th scope="col">Cnpj</th>
+                <th scope="col">Telefone</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Fornecedor" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Fornecedor" asp-action="ApagarConfirmacao">Apagar</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>fat</td>
-
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Fornecedor" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Fornecedor" asp-action="ApagarConfirmacao">Apagar</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>aaaaaa</td>
-                <td>Thornton</td>
-                <td>fat</td>
-
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Fornecedor" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Fornecedor" asp-action="ApagarConfirmacao">Apagar</a>
-                    </div>
-                </td>
-            </tr>
+            @if(Model != null && Model.Any())
+            {
+                foreach (FornecedorModel fornecedor in Model)
+                {
+                    <tr>
+                        <th scope="row">@fornecedor.Id</th>
+                        <td>@fornecedor.Nome_fornecedor</td>
+                        <td>@fornecedor.Nome_produto</td>
+                        <td>@fornecedor.Cnpj</td>
+                        <td>@fornecedor.Telefone</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@fornecedor.Id" asp-controller="Fornecedor" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger"  asp-route-id="@fornecedor.Id" asp-controller="Fornecedor" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
     </div>
