@@ -29,19 +29,23 @@ namespace PIM.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Email")
+                    b.Property<string>("nome_fornecedor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("nome_produto")
+                        .IsRequired()
+                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("cnpj")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Telefone")
+                    b.Property<string>("telefone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id_forn");
 
                     b.ToTable("Fornecedores");
                 });

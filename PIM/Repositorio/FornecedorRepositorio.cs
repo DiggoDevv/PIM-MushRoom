@@ -7,8 +7,9 @@ namespace PIM.Repositorio
     {
         //context vai gravar no banco de dados
         private readonly BancoDBContext _bancoDBContext;
-        public FornecedorRepositorio(BancoDBContext bancoDBContext) {
-                    
+        public FornecedorRepositorio(BancoDBContext bancoDBContext) 
+        {
+            _bancoDBContext = bancoDBContext;            
         }
 
         // gravar no banco de dados

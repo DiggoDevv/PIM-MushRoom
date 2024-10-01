@@ -16,9 +16,10 @@ namespace PIM.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefone = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    nome_fornecedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    nome_produto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    cnpj = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    telefone = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
