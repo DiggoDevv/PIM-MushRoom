@@ -14,7 +14,7 @@ var configuration = provider.GetRequiredService<IConfiguration>();
 builder.Services.AddDbContext<BancoDBContext>(item => item.UseSqlServer(configuration.GetConnectionString("myconn")));
 //injeção de dependencias, para que toda vez que Interface for chamada, chamar o Repositorio.
 builder.Services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
-
+builder.Services.AddScoped<IProducaoRepositorio, ProducaoRepositorio>();//erro nessa linha
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

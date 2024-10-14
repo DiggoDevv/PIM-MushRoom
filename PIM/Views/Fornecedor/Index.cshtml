@@ -1,15 +1,33 @@
 ﻿
 @model List<FornecedorModel>
 @{
-    ViewData["Title"] = "Listagem de contatos";
+    ViewData["Title"] = "Listagem de Fornecedores";
 }
     <div class="text-center">
 
     <div class="dd-grid gap-2 d-md-flex justify-content-md-stsart">
-        <a class="btn btn-primary" role="button" asp-controller="Fornecedor" asp-action="Criar">Adicionar novo contato</a>
+        <a class="btn btn-primary" role="button" asp-controller="Fornecedor" asp-action="Criar">Adicionar novo fornecedor</a>
     </div>
     <br />
 
+    @if(TempData["MensagemSucesso"] != null)
+    {
+      <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+        @TempData["MensagemSucesso"]
+    </div>  
+    }
+    @if(TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+         <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+        @TempData["MensagemErro"]
+    </div>
+    }
+    <br />
+    
+
+    
     <h1 class="display-4"> Listagem de Fornecedores </h1>
     <table class="table">
 
@@ -42,6 +60,10 @@
                         </td>
                     </tr>
                 }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhum Fornecedor encontrado</td></tr>
             }
         </tbody>
     </table>

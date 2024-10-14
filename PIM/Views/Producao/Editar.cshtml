@@ -1,0 +1,35 @@
+﻿@model ProducaoModel
+@{
+    ViewData["Title"] = "Editar producao";
+}
+<div class="text-center">
+    <h1 class="display-4"> Editar Fornecedor</h1>
+</div>
+
+<form asp-controller="Producao" asp-action="Alterar" method="post">
+
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label for="nome_fornecedor"> Nome da produção:</label>
+        <input type="text" asp-for="Nome_producao" class="form-control" placeholder="Digite o nome da produção">
+        @Html.ValidationMessageFor(x => x.Nome_producao)
+    </div>
+    <div class="mb-3">
+        <label for="nome_produto"> Informação da produção:</label>
+        <input type="text" asp-for="Info_producao" class="form-control" placeholder="Digite o nome do produto">
+        @Html.ValidationMessageFor(x => x.Info_producao)
+    </div>
+    <div class="mb-3">
+        <label for="cnpj"> Inicio da produção:</label>
+        <input type="text" asp-for="Ini_producao" class="form-control" placeholder="Digite o inicio da produção">
+        @Html.ValidationMessageFor(x => x.Ini_producao)
+    </div>
+    <div class="mb-3">
+        <label for="telefone"> Troca de substrato:</label>
+        <input type="text" asp-for="Troca_substrato" class="form-control" placeholder="Digite a troca de substrato">
+        @Html.ValidationMessageFor(x => x.Troca_substrato)
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Alterar</button>
+    <a class="btn btn-secondary btn-block" asp-controller="Producao" asp-action="Index" role="button">Voltar</a>
+</form>

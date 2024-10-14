@@ -1,6 +1,6 @@
 ﻿@model FornecedorModel
 @{
-    ViewData["Title"] = "Criar contato";
+    ViewData["Title"] = "Criar Fornecedor";
 }
 <div class="text-center">
     <h1 class="display-4"> Cadastrar Fornecedor</h1>
@@ -11,18 +11,22 @@
     <div class="mb-3">
         <label for="nome_fornecedor"> Nome do fornecedor:</label>
         <input type="text" asp-for="Nome_fornecedor" class="form-control" placeholder="Digite o nome do fornecedor" >
+        @Html.ValidationMessageFor(x => x.Nome_fornecedor)
     </div>
     <div class="mb-3">
         <label for="nome_produto"> Nome do produto:</label>
         <input type="text" asp-for="Nome_produto" class="form-control" placeholder="Digite o nome do produto do fornecedor">
+        @Html.ValidationMessageFor(x => x.Nome_produto)
     </div>
     <div class="mb-3">
         <label for="cnpj"> Cnpj do fornecedor:</label>
         <input type="text" asp-for="Cnpj" class="form-control" placeholder="Digite o cnpj do fornecedor">
+        @Html.ValidationMessageFor(x => x.Cnpj)
     </div>
     <div class="mb-3">
         <label for="telefone"> Telefone:</label>
         <input type="text" asp-for="Telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
+        @Html.ValidationMessageFor(x => x.Telefone)
     </div>
 
     <button type="submit" class="btn btn-primary btn-block">Adicionar</button>

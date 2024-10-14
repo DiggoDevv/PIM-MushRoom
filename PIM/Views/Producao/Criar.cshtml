@@ -1,0 +1,34 @@
+﻿@model ProducaoModel
+@{
+    ViewData["Title"] = "Criar produção";
+}
+<div class="text-center">
+    <h1 class="display-4"> Cadastrar Produção</h1>
+</div>
+
+<form asp-controller="Producao" asp-action="Criar" method="post">
+
+    <div class="mb-3">
+        <label for="nome_producao"> Nome da produção:</label>
+        <input type="text" asp-for="Nome_producao" class="form-control" placeholder="Digite o nome da produção" >
+        @Html.ValidationMessageFor(x => x.Nome_producao)
+    </div>
+    <div class="mb-3">
+        <label for="info_producao"> Informação da produção:</label>
+        <input type="text" asp-for="Info_producao" class="form-control" placeholder="Digite a informação da produção">
+        @Html.ValidationMessageFor(x => x.Info_producao)
+    </div>
+    <div class="mb-3">
+        <label for="ini_producao"> Inicio da produção:</label>
+        <input type="text" asp-for="Ini_producao" class="form-control" placeholder="Digite o inicio da produção">
+        @Html.ValidationMessageFor(x => x.Ini_producao)
+    </div>
+    <div class="mb-3">
+        <label for="troca_substrato"> Troca de substrato:</label>
+        <input type="text" asp-for="Troca_substrato" class="form-control" placeholder="Digite a troca de substrato">
+        @Html.ValidationMessageFor(x => x.Troca_substrato)
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
+    <a class="btn btn-secondary btn-block" asp-controller="Producao" asp-action="Index" role="button">Voltar</a>
+</form>

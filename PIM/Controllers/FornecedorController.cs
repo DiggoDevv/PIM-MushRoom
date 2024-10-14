@@ -33,22 +33,67 @@ namespace PIM.Controllers
 
         public IActionResult Apagar(int id)
         {
-            _fornecedorRepositorio.Apagar(id);
-            return RedirectToAction("Index");
+            try
+            {
+                bool apagado = _fornecedorRepositorio.Apagar(id);
+
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Fornecedor apagado com sucesso";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Não foi possivel apagar o contato do fornecedor";
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Não foi possivel apagar o contato do fornecedor, detalhes do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
+
+
         }
         //recebendo a model
         [HttpPost]
         public IActionResult Criar(FornecedorModel fornecedorModel)
         {
-            _fornecedorRepositorio.Adicionar(fornecedorModel);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _fornecedorRepositorio.Adicionar(fornecedorModel);
+                    TempData["MensagemSucesso"] = "Fornecedor cadastrado com sucesso";
+                    return RedirectToAction("Index");
+                }
+                return View(fornecedorModel);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Não foi possivel cadastrar o fornecedor, {erro.Message} tente novamente";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult Alterar(FornecedorModel fornecedorModel)
         {
-            _fornecedorRepositorio.Alterar(fornecedorModel);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _fornecedorRepositorio.Alterar(fornecedorModel);
+                    TempData["MensagemSucesso"] = "Fornecedor atualizado com sucesso";
+                    return RedirectToAction("Index");
+                }
+                return View("Editar", fornecedorModel);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Não foi possivel atualizar o fornecedor, {erro.Message} tente novamente";
+                return RedirectToAction("Index");
+            }
         }
     }
 }
