@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3">
         <label for="cnpj"> Inicio da produção:</label>
-        <input type="text" asp-for="Ini_producao" class="form-control" placeholder="Digite o inicio da produção">
+        <input type="text" asp-for="Ini_producao" id="ini_producao" class="form-control" placeholder="Digite o inicio da produção">
         @Html.ValidationMessageFor(x => x.Ini_producao)
     </div>
     <div class="mb-3">
@@ -33,3 +33,12 @@
     <button type="submit" class="btn btn-primary btn-block">Alterar</button>
     <a class="btn btn-secondary btn-block" asp-controller="Producao" asp-action="Index" role="button">Voltar</a>
 </form>
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script> <!-- jQuery Mask Plugin -->
+    <script>
+        $(document).ready(function () {
+            $('#ini_producao').mask('0000-00-00');
+        });
+    </script>
+}

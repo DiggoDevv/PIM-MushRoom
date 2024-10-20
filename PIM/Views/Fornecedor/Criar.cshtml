@@ -20,15 +20,26 @@
     </div>
     <div class="mb-3">
         <label for="cnpj"> Cnpj do fornecedor:</label>
-        <input type="text" asp-for="Cnpj" class="form-control" placeholder="Digite o cnpj do fornecedor">
+        <input type="text" asp-for="Cnpj" id="cnpj" class="form-control" placeholder="Digite o cnpj do fornecedor">
         @Html.ValidationMessageFor(x => x.Cnpj)
     </div>
     <div class="mb-3">
         <label for="telefone"> Telefone:</label>
-        <input type="text" asp-for="Telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
+        <input type="text" asp-for="Telefone" id="telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
         @Html.ValidationMessageFor(x => x.Telefone)
     </div>
+
 
     <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
     <a class="btn btn-secondary btn-block" asp-controller="Fornecedor" asp-action="Index" role="button">Voltar</a>
 </form>
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script>
+    <script>
+        // Máscara para telefone celular
+        $('#telefone').mask('(00) 90000-0000');
+
+        // Máscara para CNPJ
+        $('#cnpj').mask('00.000.000/0001-00');
+    </script>
+}
