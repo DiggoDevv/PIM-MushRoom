@@ -12,6 +12,7 @@ namespace PIM.DBContext
 
         public DbSet<FornecedorModel> Fornecedores{ get; set; }
         public DbSet<ProducaoModel> Producao { get; set; }
+        public DbSet<LoginModel> Login { get; set; }
 
 
     }
