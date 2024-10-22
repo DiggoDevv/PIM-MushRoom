@@ -1,0 +1,69 @@
+﻿@model List<ProdutoModel>
+@{
+    ViewData["Title"] = "Listagem de produtos";
+}
+<div class="text-center">
+
+    <div class="dd-grid gap-2 d-md-flex justify-content-md-stsart">
+        <a class="btn btn-primary" role="button" asp-controller="Produto" asp-action="Criar">Adicionar novo produto</a>
+    </div>
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <br />
+
+
+
+    <h1 class="display-4"> Listagem de Produtos </h1>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome do produto</th>
+                <th scope="col">Informação do Produto</th>
+                <th scope="col">Quantidade mínima</th>
+                <th scope="col">Quantidade em estoque</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (ProdutoModel produto in Model)
+                {
+                    <tr>
+                        <th scope="row">@produto.Id</th>
+                        <td>@produto.Nome_Produto</td>
+                        <td>@produto.Info_Produto</td>
+                        <td>@produto.Quant_minima</td>
+                        <td>@produto.Quant_estoque</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@produto.Id" asp-controller="Produto" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@produto.Id" asp-controller="Produto" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhum Produto encontrado</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

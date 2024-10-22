@@ -1,5 +1,6 @@
 ﻿using PIM.DBContext;
 using PIM.Models;
+using PIM.Repositorio.impl;
 
 namespace PIM.Repositorio
 {

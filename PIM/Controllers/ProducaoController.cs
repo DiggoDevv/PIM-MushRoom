@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PIM.Models;
-using PIM.Repositorio;
+using PIM.Repositorio.impl;
 
 namespace PIM.Controllers
 {

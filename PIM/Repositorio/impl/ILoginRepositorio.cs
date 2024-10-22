@@ -1,6 +1,6 @@
 ﻿using PIM.Models;
 
-namespace PIM.Repositorio
+namespace PIM.Repositorio.impl
 {
     public interface IloginRepositorio
     {

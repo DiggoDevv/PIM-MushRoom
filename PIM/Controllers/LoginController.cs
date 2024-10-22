@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PIM.Models;
-using PIM.Repositorio;
+using PIM.Repositorio.impl;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PIM.Controllers

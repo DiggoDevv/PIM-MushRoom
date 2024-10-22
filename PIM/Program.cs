@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using PIM.DBContext;
 using PIM.Repositorio;
+using PIM.Repositorio.impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<BancoDBContext>(item => item.UseSqlServer(configur
 builder.Services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
 builder.Services.AddScoped<IProducaoRepositorio, ProducaoRepositorio>();
 builder.Services.AddScoped<IloginRepositorio, LoginRepositorio>();
+builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
