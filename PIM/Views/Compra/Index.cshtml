@@ -1,0 +1,69 @@
+﻿@model List<ComprasModel>
+@{
+    ViewData["Title"] = "Listagem de compras";
+}
+<div class="text-center">
+
+    <div class="dd-grid gap-2 d-md-flex justify-content-md-stsart">
+        <a class="btn btn-primary" role="button" asp-controller="Compra" asp-action="Criar">Adicionar nova compra</a>
+    </div>
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <br />
+
+
+
+    <h1 class="display-4"> Listagem de compras </h1>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome do fornecedor</th>
+                <th scope="col">Produto Comprado</th>
+                <th scope="col">Quantidade Comprada</th>
+                <th scope="col">Valor Total</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (ComprasModel compra in Model)
+                {
+                    <tr>
+                        <th scope="row">@compra.Id</th>
+                        <td>@compra.Nome_fornecedor</td>
+                        <td>@compra.Produto_comprado</td>
+                        <td>@compra.Qtd_comprada</td>
+                        <td>@compra.Valor_total</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@compra.Id" asp-controller="Compra" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@compra.Id" asp-controller="Compra" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhuma compra encontrada</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
