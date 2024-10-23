@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PIM.Helper;
 using PIM.Models;
 using PIM.Repositorio.impl;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -8,13 +9,24 @@ namespace PIM.Controllers
     public class LoginController : Controller
     {
         private readonly IloginRepositorio _loginRepositorio;
-        public LoginController(IloginRepositorio loginRepositorio)
+        private readonly ISessao _sessao;
+        public LoginController(IloginRepositorio loginRepositorio, ISessao sessao)
         {
             _loginRepositorio = loginRepositorio;
+            _sessao = sessao;
         }
         public IActionResult Index()
         {
+            // Se o usuario estiver logado, redirecionar para a home
+            if(_sessao.BuscarSessaoLogin() != null) return RedirectToAction("Index", "Home");
             return View();
+        }
+
+        public IActionResult Sair()
+        {
+            _sessao.RemoverSessaoLogin();
+
+            return RedirectToAction("Index", "Login");
         }
 
         [HttpPost]
@@ -30,7 +42,7 @@ namespace PIM.Controllers
                     {
                         if (login.SenhaValida(loginModel.Senha))
                         {
-
+                            _sessao.CriarSessaoLogin(login);
                             return RedirectToAction("index", "home");
                         }
                     }
