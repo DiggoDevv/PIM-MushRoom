@@ -1,45 +1,45 @@
-﻿@model FornecedorModel
-@{
-    ViewData["Title"] = "Editar Fornecedor";
-}
-<div class="text-center">
-    <h1 class="display-4"> Editar Fornecedor</h1>
-</div>
+﻿ @model FornecedorModel
+ @{
+     ViewData["Title"] = "Editar Fornecedor";
+ }
+ <div class="text-center">
+     <h1 class="display-4"> Editar Fornecedor</h1>
+ </div>
 
-<form asp-controller="Fornecedor" asp-action="Alterar" method="post">
+ <form asp-controller="Fornecedor" asp-action="Alterar" method="post">
 
-    <input type="hidden" asp-for="Id" />
-    <div class="mb-3">
-        <label for="nome_fornecedor"> Nome do fornecedor:</label>
-        <input type="text" asp-for="Nome_fornecedor" class="form-control" placeholder="Digite o nome do fornecedor">
-        @Html.ValidationMessageFor(x => x.Nome_fornecedor)
-    </div>
-    <div class="mb-3">
-        <label for="nome_produto"> Nome do produto:</label>
-        <input type="text" asp-for="Nome_produto" class="form-control" placeholder="Digite o nome do produto do fornecedor">
-        @Html.ValidationMessageFor(x => x.Nome_produto)
-    </div>
-    <div class="mb-3">
-        <label for="cnpj"> Cnpj do fornecedor:</label>
-        <input type="text" asp-for="Cnpj" id="cnpj" class="form-control" placeholder="Digite o cnpj do fornecedor">
-        @Html.ValidationMessageFor(x => x.Cnpj)
-    </div>
-    <div class="mb-3">
-        <label for="telefone"> Telefone:</label>
-        <input type="text" asp-for="Telefone" id="telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
-        @Html.ValidationMessageFor(x => x.Telefone)
-    </div>
+     <input type="hidden" asp-for="Id" />
+     <div class="mb-3">
+         <label for="nome_fornecedor"> Nome do fornecedor:</label>
+         <input type="text" asp-for="Nome_fornecedor" class="form-control" placeholder="Digite o nome do fornecedor">
+         @Html.ValidationMessageFor(x => x.Nome_fornecedor)
+     </div>
+     <div class="mb-3">
+         <label for="nome_produto"> Nome do produto:</label>
+         <input type="text" asp-for="Nome_produto" class="form-control" placeholder="Digite o nome do produto do fornecedor">
+         @Html.ValidationMessageFor(x => x.Nome_produto)
+     </div>
+     <div class="mb-3">
+         <label for="cnpj"> Cnpj do fornecedor:</label>
+         <input type="text" asp-for="Cnpj" id="cnpj" class="form-control" placeholder="Digite o cnpj do fornecedor">
+         @Html.ValidationMessageFor(x => x.Cnpj)
+     </div>
+     <div class="mb-3">
+         <label for="telefone"> Telefone:</label>
+         <input type="text" asp-for="Telefone" id="telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
+         @Html.ValidationMessageFor(x => x.Telefone)
+     </div>
 
-    <button type="submit" class="btn btn-primary btn-block">Alterar</button>
-    <a class="btn btn-secondary btn-block" asp-controller="Fornecedor" asp-action="Index" role="button">Voltar</a>
-</form>
-@section Scripts {
-    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script>
-    <script>
-        // Máscara para telefone celular
-        $('#telefone').mask('(00) 90000-0000');
+     <button type="submit" class="btn btn-primary btn-block">Alterar</button>
+     <a class="btn btn-secondary btn-block" asp-controller="Fornecedor" asp-action="Index" role="button">Voltar</a>
+ </form>
+ @section Scripts {
+     <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script>
+     <script>
+         // Máscara para telefone celular
+         $('#telefone').mask('(00) 90000-0000');
 
-        // Máscara para CNPJ
-        $('#cnpj').mask('00.000.000/0001-00');
-    </script>
-}
+         // Máscara para CNPJ
+         $('#cnpj').mask('00.000.000/0001-00');
+     </script>
+ }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PIM.Models;
+using PIM.Repositorio;
 using PIM.Repositorio.impl;
 
 namespace PIM.Controllers
@@ -13,12 +15,9 @@ namespace PIM.Controllers
         }
         public IActionResult Index()
         {
-            List<FornecedorModel> fonecedores = _fornecedorRepositorio.BuscarTodos();
-            return View(fonecedores);
-        }
-        public IActionResult Criar()
-        {
-            return View();
+            var fornecedores = _fornecedorRepositorio.BuscarTodos(); 
+            ViewBag.Fornecedor = new FornecedorModel(); 
+            return View(fornecedores);
         }
         public IActionResult Editar(int id)
         {
@@ -65,16 +64,19 @@ namespace PIM.Controllers
                 {
                     _fornecedorRepositorio.Adicionar(fornecedorModel);
                     TempData["MensagemSucesso"] = "Fornecedor cadastrado com sucesso";
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index"); // Redireciona para a Index após sucesso
                 }
-                return View(fornecedorModel);
+
+                TempData["MensagemErro"] = "Houve um problema com o cadastro. Verifique os dados informados.";
+                return RedirectToAction("Index"); // Redireciona para a Index em caso de erro de validação
             }
             catch (Exception erro)
             {
-                TempData["MensagemErro"] = $"Não foi possivel cadastrar o fornecedor, {erro.Message} tente novamente";
+                TempData["MensagemErro"] = $"Não foi possível cadastrar o fornecedor. Detalhes: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
+
 
         [HttpPost]
         public IActionResult Alterar(FornecedorModel fornecedorModel)

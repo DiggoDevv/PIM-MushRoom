@@ -1,69 +1,123 @@
 ﻿@model List<FornecedorModel>
+
 @{
     ViewData["Title"] = "Listagem de Fornecedores";
 }
-    <div class="text-center">
-
-    <div class="dd-grid gap-2 d-md-flex justify-content-md-stsart">
-        <a class="btn btn-primary" role="button" asp-controller="Fornecedor" asp-action="Criar">Adicionar novo fornecedor</a>
-    </div>
-    <br />
-
-    @if(TempData["MensagemSucesso"] != null)
-    {
-      <div class="alert alert-success" role="alert">
-        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+@if (TempData["MensagemSucesso"] != null)
+{
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
         @TempData["MensagemSucesso"]
-    </div>  
-    }
-    @if(TempData["MensagemErro"] != null)
-    {
+        </div>
+}
+@if (TempData["MensagemErro"] != null)
+{
         <div class="alert alert-danger" role="alert">
-         <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
         @TempData["MensagemErro"]
-    </div>
-    }
-    <br />
-    
+        </div>
+}
+<body>
+<main>
+<section class="form-fornecedor">
+    <h2>Cadastro de Fornecedores</h2>
+    <form asp-controller="Fornecedor" asp-action="Criar" method="post">
+        <div class="mb-3">
+            <label for="nome-fornecedor">Nome do fornecedor:</label>
+            @Html.TextBox("Nome_fornecedor", "", new { @class = "form-control", id = "nome-fornecedor", placeholder = "Digite o nome do fornecedor" })
+            @Html.ValidationMessage("Nome_fornecedor")
+        </div>
+        <div class="mb-3">
+            <label for="produto-fornecedor">Nome do produto:</label>
+            @Html.TextBox("Nome_produto", "", new { @class = "form-control", id = "produto-fornecedor", placeholder = "Digite o nome do produto do fornecedor" })
+            @Html.ValidationMessage("Nome_produto")
+        </div>
+        <div class="mb-3">
+            <label for="cnpj-fornecedor">CNPJ do fornecedor:</label>
+            @Html.TextBox("Cnpj", "", new { @class = "form-control", id = "cnpj-fornecedor", placeholder = "Digite o CNPJ do fornecedor" })
+            @Html.ValidationMessage("Cnpj")
+        </div>
+        <div class="mb-3">
+            <label for="telefone-fornecedor">Telefone:</label>
+            @Html.TextBox("Telefone", "", new { @class = "form-control", id = "telefone-fornecedor", placeholder = "Digite o telefone do fornecedor" })
+            @Html.ValidationMessage("Telefone")
+        </div>
 
-    
-    <h1 class="display-4"> Listagem de Fornecedores </h1>
-    <table class="table">
+        <button class="registrar" type="submit">Adicionar</button>
+    </form>
+</section>
 
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome do fornecedor</th>
-                <th scope="col">Nome do produto</th>
-                <th scope="col">Cnpj</th>
-                <th scope="col">Telefone</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @if(Model != null && Model.Any())
-            {
-                foreach (FornecedorModel fornecedor in Model)
-                {
-                    <tr>
-                        <th scope="row">@fornecedor.Id</th>
-                        <td>@fornecedor.Nome_fornecedor</td>
-                        <td>@fornecedor.Nome_produto</td>
-                        <td>@fornecedor.Cnpj</td>
-                        <td>@fornecedor.Telefone</td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <a role="button" class="btn btn-primary" asp-route-id="@fornecedor.Id" asp-controller="Fornecedor" asp-action="Editar">Editar</a>
-                                <a role="button" class="btn btn-danger"  asp-route-id="@fornecedor.Id" asp-controller="Fornecedor" asp-action="ApagarConfirmacao">Apagar</a>
-                            </div>
-                        </td>
-                    </tr>
+
+<section class="fornecedores">
+<h1> Listagem de Fornecedores</h1>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Nome do fornecedor</th>
+            <th scope="col">Nome do produto</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Telefone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var fornecedor in Model)
+        {
+                <tr class="table-row" data-id="@fornecedor.Id">
+                    <td>@fornecedor.Nome_fornecedor</td>
+                    <td>@fornecedor.Nome_produto</td>
+                    <td>@fornecedor.Cnpj</td>
+                    <td>@fornecedor.Telefone</td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+<div class="action-buttons">
+    <button id="btnEditar" class="alterar btn" onclick="editarFornecedor()">Editar</button>
+    <button id="btnExcluir" class="excluir btn" onclick="excluirFornecedor()">Apagar</button>
+</div>
+</section>
+</main>
+</body>
+
+@section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script>
+        <script>
+            // Máscaras
+            $('#telefone-fornecedor').mask('(00) 90000-0000');
+            $('#cnpj-fornecedor').mask('00.000.000/0001-00');
+
+            // Controle de seleção de linha e ações
+            let selectedId = null;
+
+            // Função para selecionar uma linha
+            document.querySelectorAll('.table-row').forEach(row => {
+                row.addEventListener('click', () => {
+                    document.querySelectorAll('.table-row').forEach(r => r.classList.remove('selected-row'));
+                    row.classList.add('selected-row');
+                    selectedId = row.getAttribute('data-id');
+                });
+            });
+
+            function editarFornecedor() {
+                if (selectedId) {
+                    window.location.href = `@Url.Action("Editar", "Fornecedor")?id=${selectedId}`;
+                } else {
+                    alert("Selecione um fornecedor para editar.");
                 }
             }
-            else
-            {
-                <tr class="odd"><td valign="top" colspan="5">Nenhum Fornecedor encontrado</td></tr>
+
+            function excluirFornecedor() {
+                if (selectedId) {
+                    window.location.href = `@Url.Action("ApagarConfirmacao", "Fornecedor")?id=${selectedId}`;
+                } else {
+                    alert("Selecione um fornecedor para excluir.");
+                }
             }
-        </tbody>
-    </table>
-    </div>
+        </script>
+        <style>
+            .selected-row {
+                background-color: #f9e1d2;
+            }
+        </style>
+}

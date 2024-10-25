@@ -17,9 +17,6 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
-}
 
 .field-validation-error{
     color: #e01d1d;
@@ -42,3 +39,135 @@ body {
 .footer {
     background-color: #f4cab0;
 }
+
+body {
+    background-color: #f9e1d2;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-fornecedor {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 35%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .form-fornecedor h2 {
+        text-align: center;
+        color: #3d251f;
+        margin-bottom: 20px;
+    }
+
+    .form-fornecedor form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-fornecedor label {
+        margin-bottom: 5px;
+        color: #3d251f;
+    }
+
+    .form-fornecedor input {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.buttons {
+    text-align: center;
+}
+
+.cancelar {
+    padding: 10px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.fornecedores {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .fornecedores h2 {
+        text-align: center;
+        color: #3d251f;
+        margin-bottom: 10px;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead th {
+    background-color: #f4cab0;
+    padding: 8px;
+    text-align: left;
+    color: #3d251f;
+}
+
+tbody td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #f9e1d2;
+}
+
+.registrar {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 30%;
+    transition: background-color 0.3s
+}
+.registrar {
+    background-color: #6B8E23;
+}
+.action-buttons button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 30%;
+    transition: background-color 0.3s;
+}
+
+.excluir {
+    background-color: #cc3300;
+}
+
+    .excluir:hover {
+        background-color: #b32400;
+    }
+
+.alterar {
+    background-color: #f4b400;
+}
+
+    .alterar:hover {
+        background-color: #e5a200;
+    }
