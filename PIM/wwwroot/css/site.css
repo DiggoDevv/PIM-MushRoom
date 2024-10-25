@@ -33,3 +33,12 @@ body {
     width: 30px;
     height: 31px;
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+.footer {
+    background-color: #f4cab0;
+}

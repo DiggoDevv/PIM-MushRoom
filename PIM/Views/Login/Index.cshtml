@@ -14,7 +14,7 @@
 <form asp-controller="Login" asp-action="Entrar" method="post">
     <div class="mb-3">
         <label for="login" class="form-label">Login</label>
-        <input type="text" asp-for="Login" class="form-control" id="login" placeholder="Digite o login">
+        <input type="text" asp-for="Login" class="form-control" id="login" placeholder="Digite o nome do usuario">
         @Html.ValidationMessageFor(x => x.Login)
     </div>
     <div class="mb-3">
@@ -22,5 +22,5 @@
         <input type="password" asp-for="Senha" class="form-control" id="senha" placeholder="Senha">
         @Html.ValidationMessageFor(x => x.Senha)
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Entrar</button>
 </form>

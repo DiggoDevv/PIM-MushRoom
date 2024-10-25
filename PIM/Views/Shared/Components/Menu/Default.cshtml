@@ -1,29 +1,80 @@
 ﻿@model LoginModel
 
-<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Olá, @Model.Login</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-    <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Página principal</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Fornecedor" asp-action="Index">Fornecedor</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Producao" asp-action="Index">Produção</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Index">Produtos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Compra" asp-action="Index">Compras</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Sair">Sair</a>
-        </li>
-    </ul>
+<style>
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #f4cab0;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo h1 {
+            margin-left: 10px;
+            color: #3d251f;
+        }
+
+    nav ul {
+        list-style-type: none;
+        display: flex;
+    }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+            nav ul li a {
+                text-decoration: none;
+                color: #3d251f;
+                padding: 10px;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+                nav ul li a:hover {
+                    background-color: #d47c3a;
+                    color: white;
+                }
+</style>
+
+<header>
+    <div class="logo">
+        <a asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="" alt="Mushroom logo">
+        </a>
+        <h1>Mush & Room</h1>
     </div>
+
+    <nav>
+        <ul>
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Página principal</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Fornecedor" asp-action="Index">Fornecedor</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Producao" asp-action="Index">Produção</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Produto" asp-action="Index">Produtos</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Compra" asp-action="Index">Compras</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Login" asp-action="Sair">Sair</a>
+            </li>
+        </ul>
+    </nav>
+</header>
