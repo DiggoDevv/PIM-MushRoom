@@ -13,10 +13,15 @@ namespace PIM.Controllers
         {
             _fornecedorRepositorio = fornecedorRepositorio;
         }
-        public IActionResult Index()
+        public IActionResult Index(int pagina = 1, int quantidadePorPagina = 5)
         {
-            var fornecedores = _fornecedorRepositorio.BuscarTodos(); 
-            ViewBag.Fornecedor = new FornecedorModel(); 
+            var fornecedores = _fornecedorRepositorio.BuscarTodos(pagina, quantidadePorPagina);
+            var totalFornecedores = _fornecedorRepositorio.ContarFornecedores();
+            var totalPaginas = (int)Math.Ceiling((double)totalFornecedores / quantidadePorPagina);
+
+            ViewBag.TotalPaginas = totalPaginas;
+            ViewBag.PaginaAtual = pagina;
+
             return View(fornecedores);
         }
         public IActionResult Editar(int id)

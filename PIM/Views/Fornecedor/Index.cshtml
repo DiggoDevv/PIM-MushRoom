@@ -71,7 +71,16 @@
         }
     </tbody>
 </table>
-
+            <nav aria-label="Navegação de página">
+                <ul class="pagination">
+                    @for (int i = 1; i <= ViewBag.TotalPaginas; i++)
+                    {
+                        <li class="page-item @(ViewBag.PaginaAtual == i ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { pagina = i })">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
 <div class="action-buttons">
     <button id="btnEditar" class="alterar btn" onclick="editarFornecedor()">Editar</button>
     <button id="btnExcluir" class="excluir btn" onclick="excluirFornecedor()">Apagar</button>

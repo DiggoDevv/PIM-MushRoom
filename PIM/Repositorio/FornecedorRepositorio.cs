@@ -16,12 +16,17 @@ namespace PIM.Repositorio
         {
             return _bancoDBContext.Fornecedores.FirstOrDefault(x => x.Id == id);
         }
-        public List<FornecedorModel> BuscarTodos()
+        public List<FornecedorModel> BuscarTodos(int pagina = 1, int quantidadePorPagina = 5)
         {
-            //to list carrega tudo que está no banco de dados(consulta)
-            return _bancoDBContext.Fornecedores.ToList();
+            return _bancoDBContext.Fornecedores
+                .Skip((pagina - 1) * quantidadePorPagina)
+                .Take(quantidadePorPagina)
+                .ToList();
         }
-
+        public int ContarFornecedores()
+        {
+            return _bancoDBContext.Fornecedores.Count();
+        }
         public FornecedorModel Alterar(FornecedorModel fornecedor)
         {
             FornecedorModel fornecedorDB = ListarPorId(fornecedor.Id);
@@ -55,7 +60,5 @@ namespace PIM.Repositorio
             _bancoDBContext.SaveChanges();
             return true;
         }
-
-       
     }
 }
