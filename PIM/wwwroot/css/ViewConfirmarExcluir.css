@@ -1,0 +1,58 @@
+﻿/* Escopo limitado à página de exclusão */
+#exclusao-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Ocupa a tela inteira */
+    text-align: center;
+    gap: 30px; /* Espaço entre o título e os botões */
+}
+
+    /* Estilo do título */
+    #exclusao-container #exclusao-titulo {
+        color: #333;
+        font-size: 1.8rem;
+        margin: 0;
+    }
+
+    /* Container dos botões */
+    #exclusao-container #exclusao-botoes {
+        display: flex;
+        flex-direction: row; /* Botões em linha */
+        gap: 10px; /* Espaço entre os botões */
+        justify-content: center; /* Centraliza os botões */
+    }
+
+    /* Estilo dos botões com especificidade maior */
+    #exclusao-container #botao-cancelar,
+    #exclusao-container #botao-confirmar {
+        width: 200px;
+        padding: 15px;
+        font-size: 1rem;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+        color: white;
+    }
+
+    /* Botão de cancelar (verde) */
+    #exclusao-container #botao-cancelar {
+        background-color: #bfbfbf;
+    }
+
+        #exclusao-container #botao-cancelar:hover {
+            background-color: #7f7f7f;
+        }
+
+    /* Botão de confirmar (vermelho) */
+    #exclusao-container #botao-confirmar {
+        background-color: #f44336;
+    }
+
+        #exclusao-container #botao-confirmar:hover {
+            background-color: #d32f2f;
+        }

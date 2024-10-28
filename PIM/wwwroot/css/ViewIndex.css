@@ -1,4 +1,5 @@
 ﻿.main-index {
+    margin-top: 23px;
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -76,7 +77,7 @@ thead th {
 }
 
 tbody td {
-    padding: 8px;
+    padding: 18px;
     border-bottom: 1px solid #ddd;
 }
 
@@ -101,6 +102,9 @@ tbody tr:hover {
 .registrar {
     background-color: #6B8E23;
 }
+.registar:hover {
+    background-color: #556B2F;
+}
 
 .action-buttons button {
     padding: 10px;
@@ -118,12 +122,16 @@ tbody tr:hover {
 
     .excluir:hover {
         background-color: #b32400;
+        color: white;
     }
 
 .alterar {
     background-color: #f4b400;
+    margin-right: 18px;
+    margin-left: 20px
 }
 
     .alterar:hover {
         background-color: #e5a200;
+        color: white;
     }

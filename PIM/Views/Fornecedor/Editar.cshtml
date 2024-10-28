@@ -28,9 +28,10 @@
                 <input type="text" asp-for="Telefone" id="telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
                 @Html.ValidationMessageFor(x => x.Telefone)
             </div>
-
-            <button type="submit" class="btn btn-primary btn-block">Alterar</button>
-            <a class="btn btn-secondary btn-block" asp-controller="Fornecedor" asp-action="Index" role="button">Voltar</a>
+            <div class="buttons-viewEditar">
+            <button type="submit" class="btn btn-alterar btn-block">Alterar</button>
+            <a class=" btn btn-voltar btn-block" asp-controller="Fornecedor" asp-action="Index" role="button">Voltar</a>
+            </div>
         </form>
     </div>
 </div>

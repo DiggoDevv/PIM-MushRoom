@@ -34,10 +34,36 @@
     margin-top: 10px;
 }
 
-.btn-block {
+.teste123 {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 .btn-primary {
     background-color: #6B8E23;
 }
+.buttons-viewEditar {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row; /* Botões em linha */
+    gap: 10px; /* Espaço entre os botões */
+    justify-content: center; /* Centraliza os botões */
+}
+.btn-alterar {
+    color: white;
+    width: 150px;
+    background-color: #f4b400;
+}
+    .btn-alterar:hover {
+        background-color: #e5a200;
+        color: white;
+    }
+
+.btn-voltar {
+    width: 150px;
+    background-color: #bfbfbf;
+    color:white;
+}
+    .btn-voltar:hover {
+        background-color: #7f7f7f;
+        color: white;
+    }
