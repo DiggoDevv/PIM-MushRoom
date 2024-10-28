@@ -1,0 +1,43 @@
+﻿html, body {
+    height: 100%; /* Garante que o body ocupe toda a altura da tela */
+    margin: 0; /* Remove margens padrão */
+}
+
+#editar-view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinha horizontalmente ao centro */
+    justify-content: center; /* Centraliza verticalmente */
+    height: 90vh; /* Garante que o contêiner ocupe toda a altura da tela */
+}
+
+#editar-title {
+    font-size: 3rem;
+    color: #333;
+    text-align: center; 
+}
+
+#editar-form-container {
+    background-color: #ffffff;
+    padding: 40px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45vw;
+    max-width: 570px;
+    margin-top: 0;
+    margin-bottom: 0; 
+}
+
+
+.form-label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 10px;
+}
+.btn-primary {
+    background-color: #6B8E23;
+}

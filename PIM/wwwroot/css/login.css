@@ -1,0 +1,87 @@
+﻿.login-page * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.login-page-body {
+    background-color: #f5e4d7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page-box {
+    background-color: #f4cab0;
+    padding: 30px; /* Aumenta o padding do formulário */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px; /* Aumenta a largura do formulário */
+}
+
+.login-page-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .login-page-logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .login-page-logo h2 {
+        margin-top: 10px;
+        color: #3d251f;
+    }
+
+.login-page-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ajusta a largura dos campos de entrada e das labels */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.login-page-label {
+    text-align: left;
+    color: #3d251f;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.login-page-input {
+    width: 100%; /* Garante que os campos de entrada ocupem toda a largura */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-page-button {
+    padding: 10px;
+    background-color: #d47c3a;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+    .login-page-button:hover {
+        background-color: #c36528;
+    }

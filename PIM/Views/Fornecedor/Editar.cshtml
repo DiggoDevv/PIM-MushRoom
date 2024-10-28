@@ -1,38 +1,40 @@
 ﻿ @model FornecedorModel
- @{
-     ViewData["Title"] = "Editar Fornecedor";
- }
- <div class="text-center">
-     <h1 class="display-4"> Editar Fornecedor</h1>
- </div>
+@{
+    ViewData["Title"] = "Editar Fornecedor";
+}
+<div id="editar-view-container">
+    <h1 id="editar-title">Editar Fornecedor</h1>
 
- <form asp-controller="Fornecedor" asp-action="Alterar" method="post">
+    <div id="editar-form-container">
+        <form asp-controller="Fornecedor" asp-action="Alterar" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label class="form-label" for="nome_fornecedor">Nome do fornecedor:</label>
+                <input type="text" asp-for="Nome_fornecedor" class="form-control" placeholder="Digite o nome do fornecedor">
+                @Html.ValidationMessageFor(x => x.Nome_fornecedor)
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="nome_produto">Nome do produto:</label>
+                <input type="text" asp-for="Nome_produto" class="form-control" placeholder="Digite o nome do produto do fornecedor">
+                @Html.ValidationMessageFor(x => x.Nome_produto)
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="cnpj">CNPJ do fornecedor:</label>
+                <input type="text" asp-for="Cnpj" id="cnpj" class="form-control" placeholder="Digite o CNPJ do fornecedor">
+                @Html.ValidationMessageFor(x => x.Cnpj)
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="telefone">Telefone:</label>
+                <input type="text" asp-for="Telefone" id="telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
+                @Html.ValidationMessageFor(x => x.Telefone)
+            </div>
 
-     <input type="hidden" asp-for="Id" />
-     <div class="mb-3">
-         <label for="nome_fornecedor"> Nome do fornecedor:</label>
-         <input type="text" asp-for="Nome_fornecedor" class="form-control" placeholder="Digite o nome do fornecedor">
-         @Html.ValidationMessageFor(x => x.Nome_fornecedor)
-     </div>
-     <div class="mb-3">
-         <label for="nome_produto"> Nome do produto:</label>
-         <input type="text" asp-for="Nome_produto" class="form-control" placeholder="Digite o nome do produto do fornecedor">
-         @Html.ValidationMessageFor(x => x.Nome_produto)
-     </div>
-     <div class="mb-3">
-         <label for="cnpj"> Cnpj do fornecedor:</label>
-         <input type="text" asp-for="Cnpj" id="cnpj" class="form-control" placeholder="Digite o cnpj do fornecedor">
-         @Html.ValidationMessageFor(x => x.Cnpj)
-     </div>
-     <div class="mb-3">
-         <label for="telefone"> Telefone:</label>
-         <input type="text" asp-for="Telefone" id="telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
-         @Html.ValidationMessageFor(x => x.Telefone)
-     </div>
+            <button type="submit" class="btn btn-primary btn-block">Alterar</button>
+            <a class="btn btn-secondary btn-block" asp-controller="Fornecedor" asp-action="Index" role="button">Voltar</a>
+        </form>
+    </div>
+</div>
 
-     <button type="submit" class="btn btn-primary btn-block">Alterar</button>
-     <a class="btn btn-secondary btn-block" asp-controller="Fornecedor" asp-action="Index" role="button">Voltar</a>
- </form>
  @section Scripts {
      <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script>
      <script>

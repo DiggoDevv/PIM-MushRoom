@@ -2,25 +2,37 @@
 @{
     Layout = "_LayoutDeslogado";
     ViewData["Title"] = "Login";
-
 }
-@if (TempData["MensagemErro"] != null)
-{
-    <div class="alert alert-danger" role="alert">
-        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
-        @TempData["MensagemErro"]
+<div class="login-page login-page-body">
+    <div class="login-page-container">
+        <div class="login-page-box">
+            <div class="login-page-logo">
+                <!-- Adicione aqui uma imagem de logo se necessário -->
+                <img src="caminho/para/sua/logo.png" alt="Logo" />
+                <h2>Mush & Room</h2>
+            </div>
+
+            @if (TempData["MensagemErro"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">x</button>
+                    @TempData["MensagemErro"]
+                </div>
+            }
+
+            <form asp-controller="Login" asp-action="Entrar" method="post" class="login-page-form">
+                <div class="form-group">
+                    <label for="login-usuario" class="login-page-label">Login</label>
+                    <input type="text" asp-for="Login" class="login-page-input" id="login-usuario" placeholder="Digite o nome do usuário">
+                    @Html.ValidationMessageFor(x => x.Login)
+                </div>
+                <div class="form-group">
+                    <label for="senha-usuario" class="login-page-label">Senha</label>
+                    <input type="password" asp-for="Senha" class="login-page-input" id="senha-usuario" placeholder="Senha">
+                    @Html.ValidationMessageFor(x => x.Senha)
+                </div>
+                <button type="submit" class="login-page-button">Entrar</button>
+            </form>
+        </div>
     </div>
-    }
-<form asp-controller="Login" asp-action="Entrar" method="post">
-    <div class="mb-3">
-        <label for="login" class="form-label">Login</label>
-        <input type="text" asp-for="Login" class="form-control" id="login" placeholder="Digite o nome do usuario">
-        @Html.ValidationMessageFor(x => x.Login)
-    </div>
-    <div class="mb-3">
-        <label for="senha" class="form-label">Senha</label>
-        <input type="password" asp-for="Senha" class="form-control" id="senha" placeholder="Senha">
-        @Html.ValidationMessageFor(x => x.Senha)
-    </div>
-    <button type="submit" class="btn btn-primary">Entrar</button>
-</form>
+</div>
