@@ -1,35 +1,37 @@
-﻿@model ProdutoModel
+﻿ @model ProdutoModel
 @{
-    ViewData["Title"] = "Editar Produto";
+    ViewData["Title"] = "Editar produto";
 }
-<div class="text-center">
-    <h1 class="display-4"> Editar Produto</h1>
+<div id="editar-view-container">
+    <h1 id="editar-title">Editar Produto</h1>
+
+    <div id="editar-form-container">
+        <form asp-controller="Produto" asp-action="Alterar" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label class="form-label">Nome do produto:</label>
+                <input type="text" asp-for="Nome_Produto" class="form-control" placeholder="Digite o nome do fornecedor">
+                @Html.ValidationMessageFor(x => x.Nome_Produto)
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Informação do produto:</label>
+                <input type="text" asp-for="Info_Produto" class="form-control" placeholder="Digite informação do produto">
+                @Html.ValidationMessageFor(x => x.Info_Produto)
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Quantidade minima:</label>
+                <input type="text" asp-for="Quant_minima" class="form-control" placeholder="Digite o CNPJ do fornecedor">
+                @Html.ValidationMessageFor(x => x.Quant_minima)
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Quantidade em estoque:</label>
+                <input type="text" asp-for="Quant_estoque" class="form-control" placeholder="Digite o telefone do fornecedor">
+                @Html.ValidationMessageFor(x => x.Quant_estoque)
+            </div>
+            <div class="buttons-viewEditar">
+                <button type="submit" class="btn btn-alterar btn-block">Alterar</button>
+                <a class=" btn btn-voltar btn-block" asp-controller="Produto" asp-action="Index" role="button">Voltar</a>
+            </div>
+        </form>
+    </div>
 </div>
-
-<form asp-controller="Produto" asp-action="Alterar" method="post">
-
-    <input type="hidden" asp-for="Id" />
-    <div class="mb-3">
-        <label for="nome_produto"> Nome do Produto:</label>
-        <input type="text" asp-for="Nome_Produto" class="form-control" placeholder="Digite o nome do produto">
-        @Html.ValidationMessageFor(x => x.Nome_Produto)
-    </div>
-    <div class="mb-3">
-        <label for="nome_produto"> Informação do produto</label>
-        <input type="text" asp-for="Info_Produto" class="form-control" placeholder="Digite a informação do produto">
-        @Html.ValidationMessageFor(x => x.Info_Produto)
-    </div>
-    <div class="mb-3">
-        <label for="cnpj"> Quantidade mínima:</label>
-        <input type="text" asp-for="Quant_minima"class="form-control" placeholder="Digite a quantidade minima do produto">
-        @Html.ValidationMessageFor(x => x.Quant_minima)
-    </div>
-    <div class="mb-3">
-        <label for="telefone"> Quantidade em estoque:</label>
-        <input type="text" asp-for="Quant_estoque" class="form-control" placeholder="Digite a quantidade em estoque">
-        @Html.ValidationMessageFor(x => x.Quant_estoque)
-    </div>
-
-    <button type="submit" class="btn btn-primary btn-block">Alterar</button>
-    <a class="btn btn-secondary btn-block" asp-controller="Produto" asp-action="Index" role="button">Voltar</a>
-</form>

@@ -1,69 +1,98 @@
 ﻿@model List<ProducaoModel>
+
 @{
-    ViewData["Title"] = "Listagem de Producao";
+    ViewData["Title"] = "Listagem de Produção";
 }
-<div class="text-center">
-
-    <div class="dd-grid gap-2 d-md-flex justify-content-md-stsart">
-        <a class="btn btn-primary" role="button" asp-controller="Producao" asp-action="Criar">Adicionar nova produção </a>
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+        @TempData["MensagemSucesso"]
     </div>
-    <br />
-
-    @if (TempData["MensagemSucesso"] != null)
-    {
-        <div class="alert alert-success" role="alert">
-            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
-            @TempData["MensagemSucesso"]
-        </div>
-    }
-    @if (TempData["MensagemErro"] != null)
-    {
-        <div class="alert alert-danger" role="alert">
-            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
-            @TempData["MensagemErro"]
-        </div>
-    }
-    <br />
-
-
-
-    <h1 class="display-4"> Listagem de Produção </h1>
-    <table class="table">
-
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome da producao</th>
-                <th scope="col">Informação da produção</th>
-                <th scope="col">Iinicio da produção</th>
-                <th scope="col">Troca de substrato</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model != null && Model.Any())
-            {
-                foreach (ProducaoModel producao in Model)
-                {
+}
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+<body>
+    <div class="main-index">
+        @Html.Partial("_CadastroProducao", new ProducaoModel())
+        <section class="listagem-index">
+            <h1> Listagem de Produção</h1>
+            <table>
+                <thead>
                     <tr>
-                        <th scope="row">@producao.Id</th>
-                        <td>@producao.Nome_producao</td>
-                        <td>@producao.Info_producao</td>
-                        <td>@producao.Ini_producao</td>
-                        <td>@producao.Troca_substrato</td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <a role="button" class="btn btn-primary" asp-route-id="@producao.Id" asp-controller="Producao" asp-action="Editar">Editar</a>
-                                <a role="button" class="btn btn-danger" asp-route-id="@producao.Id" asp-controller="Producao" asp-action="ApagarConfirmacao">Apagar</a>
-                            </div>
-                        </td>
+                        <th scope="col">Nome da produção</th>
+                        <th scope="col">Informação da produção</th>
+                        <th scope="col">Inicio da produção</th>
+                        <th scope="col">Troca de substrato</th>
                     </tr>
-                }
+                </thead>
+                <tbody>
+                    @foreach (var fornecedor in Model)
+                    {
+                        <tr class="table-row" data-id="@fornecedor.Id">
+                            <td>@fornecedor.Nome_producao</td>
+                            <td>@fornecedor.Info_producao</td>
+                            <td>@fornecedor.Ini_producao</td>
+                            <td>@fornecedor.Troca_substrato</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <nav aria-label="Navegação de página">
+                <ul class="pagination">
+                    @for (int i = 1; i <= ViewBag.TotalPaginas; i++)
+                    {
+                        <li class="page-item @(ViewBag.PaginaAtual == i ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { pagina = i })">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+            <div class="action-buttons">
+                <button id="btnEditar" class="alterar btn" onclick="editarItem()">Editar</button>
+                <button id="btnExcluir" class="excluir btn" onclick="excluirItem()">Apagar</button>
+            </div>
+        </section>
+    </div>
+</body>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script>
+    <script>
+         $('#ini_producao').mask('0000-00-00');
+        // Controle de seleção de linha e ações
+        let selectedId = null;
+
+        // Função para selecionar uma linha
+        document.querySelectorAll('.table-row').forEach(row => {
+            row.addEventListener('click', () => {
+                document.querySelectorAll('.table-row').forEach(r => r.classList.remove('selected-row'));
+                row.classList.add('selected-row');
+                selectedId = row.getAttribute('data-id');
+            });
+        });
+
+        function editarItem() {
+            if (selectedId) {
+                window.location.href = `@Url.Action("Editar", "Producao")?id=${selectedId}`;
+            } else {
+                alert("Selecione uma produção para editar.");
             }
-            else
-            {
-                <tr class="odd"><td valign="top" colspan="5">Nenhuma Produção encontrada</td></tr>
+        }
+
+        function excluirItem() {
+            if (selectedId) {
+                window.location.href = `@Url.Action("ApagarConfirmacao", "Producao")?id=${selectedId}`;
+            } else {
+                alert("Selecione uma produção para excluir.");
             }
-        </tbody>
-    </table>
-</div>
+        }
+    </script>
+}

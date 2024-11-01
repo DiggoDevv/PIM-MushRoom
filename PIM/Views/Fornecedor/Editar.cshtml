@@ -9,22 +9,22 @@
         <form asp-controller="Fornecedor" asp-action="Alterar" method="post">
             <input type="hidden" asp-for="Id" />
             <div class="mb-3">
-                <label class="form-label" for="nome_fornecedor">Nome do fornecedor:</label>
+                <label class="form-label">Nome do fornecedor:</label>
                 <input type="text" asp-for="Nome_fornecedor" class="form-control" placeholder="Digite o nome do fornecedor">
                 @Html.ValidationMessageFor(x => x.Nome_fornecedor)
             </div>
             <div class="mb-3">
-                <label class="form-label" for="nome_produto">Nome do produto:</label>
+                <label class="form-label">Nome do produto:</label>
                 <input type="text" asp-for="Nome_produto" class="form-control" placeholder="Digite o nome do produto do fornecedor">
                 @Html.ValidationMessageFor(x => x.Nome_produto)
             </div>
             <div class="mb-3">
-                <label class="form-label" for="cnpj">CNPJ do fornecedor:</label>
+                <label class="form-label">CNPJ do fornecedor:</label>
                 <input type="text" asp-for="Cnpj" id="cnpj" class="form-control" placeholder="Digite o CNPJ do fornecedor">
                 @Html.ValidationMessageFor(x => x.Cnpj)
             </div>
             <div class="mb-3">
-                <label class="form-label" for="telefone">Telefone:</label>
+                <label class="form-label">Telefone:</label>
                 <input type="text" asp-for="Telefone" id="telefone" class="form-control" placeholder="Digite o telefone do fornecedor">
                 @Html.ValidationMessageFor(x => x.Telefone)
             </div>

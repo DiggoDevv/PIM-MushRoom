@@ -1,0 +1,28 @@
+﻿@model ProducaoModel
+
+<section class="cadastro-index">
+    <h2>Cadastro de produção</h2>
+    <form asp-controller="Producao" asp-action="Criar" method="post">
+        <div class="mb-3">
+            <label>Nome da produção:</label>
+            @Html.TextBoxFor(m => m.Nome_producao, new { @class = "form-control", placeholder = "Digite o nome da produção" })
+            @Html.ValidationMessageFor(m => m.Nome_producao)
+        </div>
+        <div class="mb-3">
+            <label>Informação da produção:</label>
+            @Html.TextBoxFor(m => m.Info_producao, new { @class = "form-control", placeholder = "Digite o inicio da produção" })
+            @Html.ValidationMessageFor(m => m.Info_producao)
+        </div>
+        <div class="mb-3">
+            <label>Inicio da produção:</label>
+            @Html.TextBoxFor(m => m.Ini_producao, new { @class = "form-control", id = "ini_producao", placeholder = "Digite o inicio da produção" })
+            @Html.ValidationMessageFor(m => m.Ini_producao)
+        </div>
+        <div class="mb-3">
+            <label>Troca de substrato:</label>
+            @Html.TextBoxFor(m => m.Troca_substrato, new { @class = "form-control", placeholder = "Digite a troca de substrato" })
+            @Html.ValidationMessageFor(m => m.Troca_substrato)
+        </div>
+        <button class="registrar" type="submit">Adicionar</button>
+    </form>
+</section>

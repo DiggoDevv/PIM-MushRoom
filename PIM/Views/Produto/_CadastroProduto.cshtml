@@ -1,0 +1,29 @@
+﻿ @model ProdutoModel
+
+<section class="cadastro-index">
+    <h2>Cadastro de Fornecedores</h2>
+    <form asp-controller="Produto" asp-action="Criar" method="post">
+        <div class="mb-3">
+            <label>Nome do produto:</label>
+            @Html.TextBoxFor(m => m.Nome_Produto, new { @class = "form-control", placeholder = "Digite o nome do produto" })
+            @Html.ValidationMessageFor(m => m.Nome_Produto)
+        </div>
+        <div class="mb-3">
+            <label>Info do produto:</label>
+            @Html.TextBoxFor(m => m.Info_Produto, new { @class = "form-control", placeholder = "Digite a informação do produto" })
+            @Html.ValidationMessageFor(m => m.Info_Produto)
+        </div>
+        <div class="mb-3">
+            <label>Quantidade minima:</label>
+            @Html.TextBoxFor(m => m.Quant_minima, new { @class = "form-control", placeholder = "Digite a quantidade minima" })
+            @Html.ValidationMessageFor(m => m.Quant_minima)
+        </div>
+        <div class="mb-3">
+            <label>Quantidade em estoque:</label>
+            @Html.TextBoxFor(m => m.Quant_estoque, new { @class = "form-control", placeholder = "Digite a quantidaeda em estoque" })
+            @Html.ValidationMessageFor(m => m.Quant_estoque)
+        </div>
+
+        <button class="registrar" type="submit">Adicionar</button>
+    </form>
+</section>

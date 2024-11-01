@@ -2,37 +2,39 @@
 @{
     ViewData["Title"] = "Editar producao";
 }
-<div class="text-center">
-    <h1 class="display-4"> Editar Fornecedor</h1>
+<div id="editar-view-container">
+    <h1 id="editar-title">Editar produção</h1>
+
+    <div id="editar-form-container">
+        <form asp-controller="Producao" asp-action="Alterar" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label class="form-label">Nome da produção:</label>
+                <input type="text" asp-for="Nome_producao" class="form-control" placeholder="Digite o nome da produção">
+                @Html.ValidationMessageFor(x => x.Nome_producao)
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Informação da produção:</label>
+                <input type="text" asp-for="Info_producao" class="form-control" placeholder="Digite a informação da produção">
+                @Html.ValidationMessageFor(x => x.Info_producao)
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Inicio da produção:</label>
+                <input type="text" asp-for="Ini_producao" id="ini_producao" class="form-control" placeholder="Digite o a data de inicio da produção">
+                @Html.ValidationMessageFor(x => x.Ini_producao)
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Troca de substrato:</label>
+                <input type="text" asp-for="Troca_substrato" class="form-control" placeholder="Digite a troca de substrato">
+                @Html.ValidationMessageFor(x => x.Troca_substrato)
+            </div>
+            <div class="buttons-viewEditar">
+                <button type="submit" class="btn btn-alterar btn-block">Alterar</button>
+                <a class=" btn btn-voltar btn-block" asp-controller="Producao" asp-action="Index" role="button">Voltar</a>
+            </div>
+        </form>
+    </div>
 </div>
-
-<form asp-controller="Producao" asp-action="Alterar" method="post">
-
-    <input type="hidden" asp-for="Id" />
-    <div class="mb-3">
-        <label for="nome_fornecedor"> Nome da produção:</label>
-        <input type="text" asp-for="Nome_producao" class="form-control" placeholder="Digite o nome da produção">
-        @Html.ValidationMessageFor(x => x.Nome_producao)
-    </div>
-    <div class="mb-3">
-        <label for="nome_produto"> Informação da produção:</label>
-        <input type="text" asp-for="Info_producao" class="form-control" placeholder="Digite o nome do produto">
-        @Html.ValidationMessageFor(x => x.Info_producao)
-    </div>
-    <div class="mb-3">
-        <label for="cnpj"> Inicio da produção:</label>
-        <input type="text" asp-for="Ini_producao" id="ini_producao" class="form-control" placeholder="Digite o inicio da produção">
-        @Html.ValidationMessageFor(x => x.Ini_producao)
-    </div>
-    <div class="mb-3">
-        <label for="telefone"> Troca de substrato:</label>
-        <input type="text" asp-for="Troca_substrato" class="form-control" placeholder="Digite a troca de substrato">
-        @Html.ValidationMessageFor(x => x.Troca_substrato)
-    </div>
-
-    <button type="submit" class="btn btn-primary btn-block">Alterar</button>
-    <a class="btn btn-secondary btn-block" asp-controller="Producao" asp-action="Index" role="button">Voltar</a>
-</form>
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script> <!-- jQuery Mask Plugin -->
@@ -41,4 +43,4 @@
             $('#ini_producao').mask('0000-00-00');
         });
     </script>
-}
+}s

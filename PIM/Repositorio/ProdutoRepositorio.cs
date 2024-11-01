@@ -16,10 +16,12 @@ namespace PIM.Repositorio
         {
             return _bancoDBContext.Produto.FirstOrDefault(x => x.Id == id);
         }
-        public List<ProdutoModel> BuscarTodos()
+        public List<ProdutoModel> BuscarTodos(int pagina = 1, int quantidadePorPagina = 5)
         {
-            //to list carrega tudo que está no banco de dados(consulta)
-            return _bancoDBContext.Produto.ToList();
+            return _bancoDBContext.Produto
+                .Skip((pagina - 1) * quantidadePorPagina)
+                .Take(quantidadePorPagina)
+                .ToList();
         }
 
         public ProdutoModel Alterar(ProdutoModel produto)
@@ -54,6 +56,10 @@ namespace PIM.Repositorio
             _bancoDBContext.Produto.Remove(produtoDB);
             _bancoDBContext.SaveChanges();
             return true;
+        }
+        public int ContarProdutos()
+        {
+            return _bancoDBContext.Produto.Count();
         }
     }
 }

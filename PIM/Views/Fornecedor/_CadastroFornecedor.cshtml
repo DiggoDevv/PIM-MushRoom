@@ -1,25 +1,25 @@
 ﻿@model FornecedorModel
 
-<section class="form-fornecedor">
+<section class="cadastro-index">
     <h2>Cadastro de Fornecedores</h2>
     <form asp-controller="Fornecedor" asp-action="Criar" method="post">
         <div class="mb-3">
-            <label for="nome-fornecedor">Nome do fornecedor:</label>
+            <label>Nome do fornecedor:</label>
             @Html.TextBoxFor(m => m.Nome_fornecedor, new { @class = "form-control", id = "nome-fornecedor", placeholder = "Digite o nome do fornecedor" })
             @Html.ValidationMessageFor(m => m.Nome_fornecedor)
         </div>
         <div class="mb-3">
-            <label for="produto-fornecedor">Nome do produto:</label>
+            <label>Nome do produto:</label>
             @Html.TextBoxFor(m => m.Nome_produto, new { @class = "form-control", id = "produto-fornecedor", placeholder = "Digite o nome do produto do fornecedor" })
             @Html.ValidationMessageFor(m => m.Nome_produto)
         </div>
         <div class="mb-3">
-            <label for="cnpj-fornecedor">CNPJ do fornecedor:</label>
+            <label>CNPJ do fornecedor:</label>
             @Html.TextBoxFor(m => m.Cnpj, new { @class = "form-control", id = "cnpj-fornecedor", placeholder = "Digite o CNPJ do fornecedor" })
             @Html.ValidationMessageFor(m => m.Cnpj)
         </div>
         <div class="mb-3">
-            <label for="telefone-fornecedor">Telefone:</label>
+            <label>Telefone:</label>
             @Html.TextBoxFor(m => m.Telefone, new { @class = "form-control", id = "telefone-fornecedor", placeholder = "Digite o telefone do fornecedor" })
             @Html.ValidationMessageFor(m => m.Telefone)
         </div>

@@ -1,0 +1,29 @@
+﻿@model ComprasModel
+
+<section class="cadastro-index">
+    <h2>Cadastro de Compras</h2>
+    <form asp-controller="Compra" asp-action="Criar" method="post">
+        <div class="mb-3">
+            <label>Nome do fornecedor:</label>
+            @Html.TextBoxFor(m => m.Nome_fornecedor, new { @class = "form-control", placeholder = "Digite o nome do fornecedor" })
+            @Html.ValidationMessageFor(m => m.Nome_fornecedor)
+        </div>
+        <div class="mb-3">
+            <label>Produto comprado:</label>
+            @Html.TextBoxFor(m => m.Produto_comprado, new { @class = "form-control", placeholder = "Digite o nome do produto comprado" })
+            @Html.ValidationMessageFor(m => m.Produto_comprado)
+        </div>
+        <div class="mb-3">
+            <label>Quantidade comprada</label>
+            @Html.TextBoxFor(m => m.Qtd_comprada, new { @class = "form-control", placeholder = "Digite a quantidade comprada" })
+            @Html.ValidationMessageFor(m => m.Qtd_comprada)
+        </div>
+        <div class="mb-3">
+            <label>Valor total:</label>
+            @Html.TextBoxFor(m => m.Valor_total, new { @class = "form-control", id = "valor_total", placeholder = "Digite o valor total" })
+            @Html.ValidationMessageFor(m => m.Valor_total)
+        </div>
+
+        <button class="registrar" type="submit">Adicionar</button>
+    </form>
+</section>

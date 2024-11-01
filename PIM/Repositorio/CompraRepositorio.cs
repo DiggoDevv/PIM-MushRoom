@@ -16,12 +16,17 @@ namespace PIM.Repositorio
         {
             return _bancoDBContext.Compras.FirstOrDefault(x => x.Id == id);
         }
-        public List<ComprasModel> BuscarTodos()
+        public List<ComprasModel> BuscarTodos(int pagina = 1, int quantidadePorPagina = 5)
         {
-            //to list carrega tudo que está no banco de dados(consulta)
-            return _bancoDBContext.Compras.ToList();
+            return _bancoDBContext.Compras
+                .Skip((pagina - 1) * quantidadePorPagina)
+                .Take(quantidadePorPagina)
+                .ToList();
         }
-
+        public int ContarCompras()
+        {
+            return _bancoDBContext.Compras.Count();
+        }
         public ComprasModel Alterar(ComprasModel compras)
         {
             ComprasModel comprasDB = ListarPorId(compras.Id);

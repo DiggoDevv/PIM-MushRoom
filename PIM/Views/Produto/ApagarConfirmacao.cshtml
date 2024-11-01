@@ -1,11 +1,29 @@
 ﻿@model ProdutoModel
 @{
-    ViewData["Title"] = "Confimacao apagar produto";
+    ViewData["Title"] = "Confirmação apagar o Produto";
 }
 
-<div class="text-center">
-    <h3>Realmente deseja apagar o produto (@Model.Nome_Produto)</h3>
-</div>
+<div id="exclusao-container">
+    <h3 id="exclusao-titulo">
+        Realmente deseja apagar o produto: (@Model.Nome_Produto)
+    </h3>
 
-<a class="btn btn-primary" role="button" asp-controller="Produto" asp-action="Index">Cancelar exclusão</a>
-<a class="btn btn-danger" role="button" asp-controller="Produto" asp-route-id="@Model.Id" asp-action="Apagar">Confirmar exclusão</a>
+    <div id="exclusao-botoes">
+        <a id="botao-cancelar"
+           class="btn"
+           role="button"
+           asp-controller="Produto"
+           asp-action="Index">
+            Cancelar exclusão
+        </a>
+
+        <a id="botao-confirmar"
+           class="btn"
+           role="button"
+           asp-controller="Produto"
+           asp-action="Apagar"
+           asp-route-id="@Model.Id">
+            Confirmar exclusão
+        </a>
+    </div>
+</div>

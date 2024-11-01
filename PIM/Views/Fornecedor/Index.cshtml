@@ -5,44 +5,44 @@
 }
 @if (TempData["MensagemSucesso"] != null)
 {
-        <div class="alert alert-success" role="alert">
-            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
         @TempData["MensagemSucesso"]
-        </div>
+    </div>
 }
 @if (TempData["MensagemErro"] != null)
 {
-        <div class="alert alert-danger" role="alert">
-            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">x</button>
         @TempData["MensagemErro"]
-        </div>
+    </div>
 }
 <body>
-<div class="main-index">
+    <div class="main-index">
         @Html.Partial("_CadastroFornecedor", new FornecedorModel())
-<section class="fornecedores">
-<h1> Listagem de Fornecedores</h1>
-<table>
-    <thead>
-        <tr>
-            <th scope="col">Nome do fornecedor</th>
-            <th scope="col">Nome do produto</th>
-            <th scope="col">CNPJ</th>
-            <th scope="col">Telefone</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var fornecedor in Model)
-        {
-                <tr class="table-row" data-id="@fornecedor.Id">
-                    <td>@fornecedor.Nome_fornecedor</td>
-                    <td>@fornecedor.Nome_produto</td>
-                    <td>@fornecedor.Cnpj</td>
-                    <td>@fornecedor.Telefone</td>
-                </tr>
-        }
-    </tbody>
-</table>
+        <section class="listagem-index">
+            <h1> Listagem de Fornecedores</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do fornecedor</th>
+                        <th scope="col">Nome do produto</th>
+                        <th scope="col">CNPJ</th>
+                        <th scope="col">Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var fornecedor in Model)
+                    {
+                        <tr class="table-row" data-id="@fornecedor.Id">
+                            <td>@fornecedor.Nome_fornecedor</td>
+                            <td>@fornecedor.Nome_produto</td>
+                            <td>@fornecedor.Cnpj</td>
+                            <td>@fornecedor.Telefone</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
             <nav aria-label="Navegação de página">
                 <ul class="pagination">
                     @for (int i = 1; i <= ViewBag.TotalPaginas; i++)
@@ -53,54 +53,49 @@
                     }
                 </ul>
             </nav>
-<div class="action-buttons">
-    <button id="btnEditar" class="alterar btn" onclick="editarFornecedor()">Editar</button>
-    <button id="btnExcluir" class="excluir btn" onclick="excluirFornecedor()">Apagar</button>
-</div>
-</section>
- </div>
+            <div class="action-buttons">
+                <button id="btnEditar" class="alterar btn" onclick="editarItem()">Editar</button>
+                <button id="btnExcluir" class="excluir btn" onclick="excluirItem()">Apagar</button>
+            </div>
+        </section>
+    </div>
 </body>
 
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
-        <script>
-            // Máscaras
-            $('#telefone-fornecedor').mask('(00) 90000-0000');
-            $('#cnpj-fornecedor').mask('00.000.000/0001-00');
+    <script>
+        // Máscaras
+        $('#telefone-fornecedor').mask('(00) 90000-0000');
+        $('#cnpj-fornecedor').mask('00.000.000/0001-00');
 
-            // Controle de seleção de linha e ações
-            let selectedId = null;
+        // Controle de seleção de linha e ações
+        let selectedId = null;
 
-            // Função para selecionar uma linha
-            document.querySelectorAll('.table-row').forEach(row => {
-                row.addEventListener('click', () => {
-                    document.querySelectorAll('.table-row').forEach(r => r.classList.remove('selected-row'));
-                    row.classList.add('selected-row');
-                    selectedId = row.getAttribute('data-id');
-                });
+        // Função para selecionar uma linha
+        document.querySelectorAll('.table-row').forEach(row => {
+            row.addEventListener('click', () => {
+                document.querySelectorAll('.table-row').forEach(r => r.classList.remove('selected-row'));
+                row.classList.add('selected-row');
+                selectedId = row.getAttribute('data-id');
             });
+        });
 
-            function editarFornecedor() {
-                if (selectedId) {
-                    window.location.href = `@Url.Action("Editar", "Fornecedor")?id=${selectedId}`;
-                } else {
-                    alert("Selecione um fornecedor para editar.");
-                }
+        function editarItem() {
+            if (selectedId) {
+                window.location.href = `@Url.Action("Editar", "Fornecedor")?id=${selectedId}`;
+            } else {
+                alert("Selecione um fornecedor para editar.");
             }
+        }
 
-            function excluirFornecedor() {
-                if (selectedId) {
-                    window.location.href = `@Url.Action("ApagarConfirmacao", "Fornecedor")?id=${selectedId}`;
-                } else {
-                    alert("Selecione um fornecedor para excluir.");
-                }
+        function excluirItem() {
+            if (selectedId) {
+                window.location.href = `@Url.Action("ApagarConfirmacao", "Fornecedor")?id=${selectedId}`;
+            } else {
+                alert("Selecione um fornecedor para excluir.");
             }
-        </script>
-        <style>
-            .selected-row {
-                background-color: #f9e1d2;
-            }
-        </style>
+        }
+    </script>
 }

@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using PIM.Models;
-using PIM.Repositorio;
 using PIM.Repositorio.impl;
 
 namespace PIM.Controllers
@@ -16,8 +14,8 @@ namespace PIM.Controllers
         public IActionResult Index(int pagina = 1, int quantidadePorPagina = 5)
         {
             var fornecedores = _fornecedorRepositorio.BuscarTodos(pagina, quantidadePorPagina);
-            var totalFornecedores = _fornecedorRepositorio.ContarFornecedores();
-            var totalPaginas = (int)Math.Ceiling((double)totalFornecedores / quantidadePorPagina);
+            var total = _fornecedorRepositorio.ContarFornecedores();
+            var totalPaginas = (int)Math.Ceiling((double)total / quantidadePorPagina);
 
             ViewBag.TotalPaginas = totalPaginas;
             ViewBag.PaginaAtual = pagina;

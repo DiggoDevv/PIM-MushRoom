@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PIM.Models;
+using PIM.Repositorio;
 using PIM.Repositorio.impl;
 
 namespace PIM.Controllers
@@ -12,10 +13,16 @@ namespace PIM.Controllers
             _producaoRepositorio = producaoRepositorio;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pagina = 1, int quantidadePorPagina = 5)
         {
-            List<ProducaoModel> producoes= _producaoRepositorio.BuscarTodos();
-            return View(producoes);
+            var producao = _producaoRepositorio.BuscarTodos(pagina, quantidadePorPagina);
+            var total = _producaoRepositorio.ContarProducao();
+            var totalPaginas = (int)Math.Ceiling((double)total / quantidadePorPagina);
+
+            ViewBag.TotalPaginas = totalPaginas;
+            ViewBag.PaginaAtual = pagina;
+
+            return View(producao);
         }
         public IActionResult Criar()
         {

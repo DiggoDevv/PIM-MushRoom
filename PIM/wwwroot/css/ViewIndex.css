@@ -5,7 +5,7 @@
     justify-content: space-between;
 }
 
-.form-fornecedor {
+.cadastro-index {
     background-color: white;
     border-radius: 10px;
     padding: 20px;
@@ -13,23 +13,23 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-    .form-fornecedor h2 {
+    .cadastro-index h2 {
         text-align: center;
         color: #3d251f;
         margin-bottom: 20px;
     }
 
-    .form-fornecedor form {
+    .cadastro-index form {
         display: flex;
         flex-direction: column;
     }
 
-    .form-fornecedor label {
+    .cadastro-index label {
         margin-bottom: 5px;
         color: #3d251f;
     }
 
-    .form-fornecedor input {
+    .cadastro-index input {
         padding: 10px;
         margin-bottom: 15px;
         border: 1px solid #ccc;
@@ -49,7 +49,7 @@
     cursor: pointer;
 }
 
-.fornecedores {
+.listagem-index {
     background-color: white;
     border-radius: 10px;
     padding: 20px;
@@ -57,7 +57,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-    .fornecedores h2 {
+    .listagem-index h2 {
         text-align: center;
         color: #3d251f;
         margin-bottom: 10px;
@@ -135,3 +135,6 @@ tbody tr:hover {
         background-color: #e5a200;
         color: white;
     }
+.selected-row {
+    background-color: #f9e1d2;
+}

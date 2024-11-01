@@ -4,8 +4,6 @@
     header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: 10px;
         background-color: #f4cab0;
     }
 
@@ -15,22 +13,25 @@
     }
 
         .logo img {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
+            margin-left: 10px;
         }
 
         .logo h1 {
+            margin-top: 5px;
             margin-left: 10px;
             color: #3d251f;
         }
 
     nav ul {
         list-style-type: none;
+        margin:13px;
         display: flex;
     }
 
         nav ul li {
-            margin-left: 20px;
+            margin-left: 10px;
         }
 
             nav ul li a {
@@ -50,7 +51,7 @@
 <header>
     <div class="logo">
         <a asp-area="" asp-controller="Home" asp-action="Index">
-            <img src="" alt="Mushroom logo">
+            <img src="/img/mashromColor.png" alt="Mushroom logo">
         </a>
         <h1>Mush & Room</h1>
     </div>
