@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PIM.Helper;
+using System.ComponentModel.DataAnnotations;
 
 namespace PIM.Models
 {
@@ -13,7 +14,7 @@ namespace PIM.Models
 
         public bool SenhaValida(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.GerarHash();
         }
     }
 }
