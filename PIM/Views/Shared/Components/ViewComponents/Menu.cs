@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using PIM.Models;
 
-namespace PIM.ViewComponents
+namespace PIM.Views.Shared.Components.ViewComponents
 {
     public class Menu : ViewComponent
     {

@@ -1,7 +1,7 @@
 ﻿@model List<ProducaoModel>
 
 @{
-    ViewData["Title"] = "Listagem de Produção";
+    ViewData["Title"] = "Listagem de Producao";
 }
 @if (TempData["MensagemSucesso"] != null)
 {
@@ -21,24 +21,24 @@
     <div class="main-index">
         @Html.Partial("_CadastroProducao", new ProducaoModel())
         <section class="listagem-index">
-            <h1> Listagem de Produção</h1>
+            <h1> Listagem de Produções</h1>
             <table>
                 <thead>
                     <tr>
                         <th scope="col">Nome da produção</th>
                         <th scope="col">Informação da produção</th>
                         <th scope="col">Inicio da produção</th>
-                        <th scope="col">Troca de substrato</th>
+                        <th scope="col">Troca_substrato</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var fornecedor in Model)
+                    @foreach (var producao in Model)
                     {
-                        <tr class="table-row" data-id="@fornecedor.Id">
-                            <td>@fornecedor.Nome_producao</td>
-                            <td>@fornecedor.Info_producao</td>
-                            <td>@fornecedor.Ini_producao</td>
-                            <td>@fornecedor.Troca_substrato</td>
+                        <tr class="table-row" data-id="@producao.Id">
+                            <td>@producao.Nome_producao</td>
+                            <td>@producao.Info_producao</td>
+                            <td>@producao.Ini_producao</td>
+                            <td>@producao.Troca_substrato</td>
                         </tr>
                     }
                 </tbody>
@@ -66,7 +66,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.15/dist/jquery.mask.min.js"></script>
     <script>
-         $('#ini_producao').mask('0000-00-00');
+        $('#ini_producao').mask('0000-00-00');
         // Controle de seleção de linha e ações
         let selectedId = null;
 

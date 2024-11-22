@@ -1,0 +1,20 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Remove a barra de rolagem */
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 85vh; /* Ocupa exatamente a altura da tela */
+    text-align: center;
+}
+
+.home-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333
+}

@@ -13,7 +13,7 @@ namespace PIM.Controllers
             _producaoRepositorio = producaoRepositorio;
         }
 
-        public IActionResult Index(int pagina = 1, int quantidadePorPagina = 5)
+        public IActionResult Index(int pagina = 1, int quantidadePorPagina = 3)
         {
             var producao = _producaoRepositorio.BuscarTodos(pagina, quantidadePorPagina);
             var total = _producaoRepositorio.ContarProducao();

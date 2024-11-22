@@ -85,3 +85,11 @@
     .login-page-button:hover {
         background-color: #c36528;
     }
+.erroLogin {
+    background-color: #f5e4d7; /* Cor de fundo desejada para o erro */
+    color: #721c24; /* Cor do texto para contrastar com o fundo */
+    border-color: #f5c6cb; /* Cor da borda */
+    padding: 5px; /* Adiciona um pouco de padding para melhorar o espaçamento interno */
+    margin-bottom: 15px;
+    border-radius: 5px; /* Arredonda as bordas */
+}

@@ -5,7 +5,7 @@ namespace PIM.Models
    public class FornecedorModel
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Digite o mome do fornecedor")]
+        [Required(ErrorMessage = "Digite o nome do fornecedor")]
         public string Nome_fornecedor { get; set; }
         [Required(ErrorMessage = "Digite o nome do produto")]
         public string Nome_produto { get; set; }
