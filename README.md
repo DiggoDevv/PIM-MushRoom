@@ -1,0 +1,1 @@
+### Configurações para rodar a aplicação
